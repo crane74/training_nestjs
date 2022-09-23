@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  app:
+    container_name: training_nestjs
+
+    environment:
+      - NODE_ENV=development
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ./nestjs_app/:/usr/src/app
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
+
+    ports:
+      - 3000:3000
+
+    command: bash -c "cd test && npm run start"
+
+    stdin_open: true
+    tty: true
