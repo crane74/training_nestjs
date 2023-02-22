@@ -12,14 +12,14 @@ services:
       dockerfile: Dockerfile
 
     volumes:
-      - ./nestjs_app/:/usr/src/app
+      - ./:/usr/src/app
       - ~/.ssh:/root/.ssh:ro
       - ~/.gitconfig:/root/.gitconfig:ro
 
     ports:
       - 3000:3000
 
-    command: bash -c "cd test && npm run start"
+    command: bash -c "cd test && npm run start:dev"
 
     stdin_open: true
     tty: true
