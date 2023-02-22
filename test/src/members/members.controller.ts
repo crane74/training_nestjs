@@ -7,9 +7,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { MembersService } from './members.service';
-import { CreateMemberDto } from './dto/create-member.dto';
-import { UpdateMemberDto } from './dto/update-member.dto';
+
 import {
   ApiOperation,
   ApiParam,
@@ -17,7 +15,10 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { CreateMemberDto } from 'src/members/dto/create-member.dto';
+import { UpdateMemberDto } from 'src/members/dto/update-member.dto';
 import { Member } from 'src/members/entities/member.entity';
+import { MembersService } from 'src/members/members.service';
 
 @Controller('members')
 @ApiTags('members')
