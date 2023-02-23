@@ -1,1 +1,4 @@
-export class CreateMemberDto {}
+export class CreateMemberDto {
+  name: string;
+  age: number;
+}
