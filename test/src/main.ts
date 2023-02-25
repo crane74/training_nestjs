@@ -1,6 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { writeFileSync } from 'fs';
+import * as path from 'path';
 import { AppModule } from 'src/app.module';
+import { dump } from 'js-yaml';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,6 +14,9 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  const outputParh = path.resolve(process.cwd(), 'openapi.yml');
+  writeFileSync(outputParh, dump(document, {}));
   await app.listen(3000);
 }
 bootstrap();
